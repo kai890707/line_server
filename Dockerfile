@@ -8,6 +8,7 @@ ENV NGINX_VERSION 1.25.2-1~bullseye
 ENV php_conf /etc/php/8.2/fpm/php.ini
 ENV fpm_conf /etc/php/8.2/fpm/pool.d/www.conf
 ENV COMPOSER_VERSION 2.5.8
+ENV MY_VARIABLE=my_value
 
 # Install Basic Requirements
 RUN buildDeps='curl gcc make autoconf libc-dev zlib1g-dev pkg-config' \
