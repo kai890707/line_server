@@ -6,8 +6,8 @@ require_once './function/BaseConnection.php';
 
 
 // 設定Token 
-$ChannelSecret      = 'f0bda4b713a037d67aa0807437822bbc'; 
-$ChannelAccessToken = 'eU9xcmWJsfv9/FCwNPEU1RrJdfjecI1gqMpQrFmmCpUv5tLxF8ITTIJxJ9UBrGqwmM31PLB/vYkpuVRW1LrEeZUSuI9GMTZMDCJHNeI4CBG3j5EOEIEhNolU59RnFK3h8JXcMvv0vFFN6meIiA9fGgdB04t89/1O/w1cDnyilFU='; 
+$ChannelSecret      = ''; 
+$ChannelAccessToken = ''; 
 $baseConnection     = new BaseConnection($ChannelSecret,$ChannelAccessToken);
 $DbConnection       = DBConnectionHandler::getConnection();
 $HttpRequestBody    = file_get_contents('php://input'); 
