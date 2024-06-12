@@ -409,7 +409,7 @@ function allTasks($DbConnection) {
     $sql = "
         SELECT *
         FROM tasks 
-        ORDER BY start_time ASC;;
+        ORDER BY start_time ASC;
     ";
     // 預備語句
     $stmt = $DbConnection->prepare($sql);
@@ -490,7 +490,8 @@ function insertTask($DbConnection,$task_name,$task_description)
     }
     try {
         // 準備 SQL 語句
-        $sql = "INSERT INTO tasks (task_name, task_description) VALUES (:task_name, :task_description)";
+        // 準備 SQL 語句
+        $sql = "INSERT INTO tasks (task_name, task_description) VALUES (:task_name, :task_description) RETURNING id";
         // 預備語句
         $stmt = $DbConnection->prepare($sql);
         // 綁定參數
@@ -498,7 +499,8 @@ function insertTask($DbConnection,$task_name,$task_description)
         $stmt->bindParam(':task_description', $task_description);
         // 執行語句
         $stmt->execute();
-        $inserted_id = $DbConnection->lastInsertId();
+        // 獲取新插入行的ID
+        $inserted_id = $stmt->fetchColumn();
         return [
             [
                 'type' => 'text',
